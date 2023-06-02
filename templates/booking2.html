@@ -1,0 +1,42 @@
+{% extends "base2.html" %}
+{% block title %} Booking {% endblock %}
+{% block content %}
+
+<h2 style="text-align: center;">Booking Flight Ticket</h2>
+<div>
+    <div style="text-align: center;">
+        {% with messages = get_flashed_messages(with_categories = true) %}
+        {% if messages %}
+            {% for category,message in messages %}
+                <div class="alert alert-{{category}}"> {{message}}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </div>
+    <h4> Flight Booked Details Are:</h4>
+    <div>
+    <table>
+        <tr>
+            <th style="text-align: left;">Flight ID:</th>
+            <td style="text-align: right;">{{details['currentFlight']}}</td>
+        </tr>
+        <tr>
+            <th style="text-align: left;">Passenger ID:</th>
+            <td style="text-align: right;">{{details['passengerId']}}</td>
+        </tr>
+        <tr>
+            <th style="text-align: left;">No of Tickets Booked: </th>
+            <td style="text-align: right;">{{details['require_ticket']}}</td>
+        </tr>
+        <tr>
+            <th style="text-align: left;">Total Amount:</th>
+            <td style="text-align: right;">{{details['totalAmount']}}</td>
+        </tr>
+    </table>
+    </div>
+    
+    <h3> The Availale Tickets are : {{Available_Ticket}}</h3>
+    <h3> Price Amount : {{currentAmount}}</h3>
+    <h6> Want to continue another Booking? <a href="{{url_for('booking')}}"> Booking </a> </h6>
+</div>
+{% endblock %}

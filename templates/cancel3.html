@@ -1,0 +1,19 @@
+{% extends "base2.html" %}
+{% block title %} Canceling {% endblock %}
+{% block content %}
+
+<h2>Canceling Flight Ticket</h2>
+<div style="text-align: center;">
+    {% with messages = get_flashed_messages(with_categories = true) %}
+    {% if messages %}
+        {% for category,message in messages %}
+            <div class="alert alert-{{category}}"> {{message}}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+</div>
+<div>
+    <h3> Your refund amount is : {{refund_amount}}</h3>
+</div>  
+<h6> Want to cancel booked ticket again? <a href="{{url_for('cancel')}}"> Booking </a> </h6>
+{% endblock %}

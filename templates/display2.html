@@ -1,0 +1,36 @@
+{% extends "base2.html" %}
+{% block title %} Display {% endblock %}
+{% block content %}
+
+    
+<h3 style="text-align: center;"> Displaying the Booking Details</h3>
+<h3> The Availale Tickets are : {{Available_Ticket}}</h3>
+<h3> Price Amount : {{currentAmount}}</h3>
+<div style="text-align: center;">
+    {% with messages = get_flashed_messages(with_categories = true) %}
+    {% if messages %}
+        {% for category,message in messages %}
+            <div class="alert alert-{{category}}"> {{message}}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+</div>
+<div>
+    <h4> Display the all passenger's details:</h4>
+    <table>
+        <tr>
+        <th>Flight ID</th>   
+        <th>Passenger ID</th>
+        <th>No of Tickets</th>
+        </tr>
+        {% for i in range(length) %}          
+        <tr>
+            <td>{{flightID_arr[i]}}</td>
+            <td>{{passengerID_arr[i]}}</td>
+            <td>{{No_of_ticket_arr[i]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<h6> Want to display again? <a href="{{url_for('display')}}"> Display </a> </h6>
+{% endblock %}

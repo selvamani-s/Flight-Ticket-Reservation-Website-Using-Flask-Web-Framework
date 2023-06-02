@@ -1,0 +1,48 @@
+{% extends "base2.html" %}
+{% block title %} Booking {%endblock%}
+{% block content%}
+
+<h2>Booking Flight Ticket</h2>
+<div style="text-align: center;">
+    {% with messages = get_flashed_messages(with_categories = true) %}
+    {% if messages %}
+        {% for category,message in messages %}
+            <div class="alert alert-{{category}}"> {{message}}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+</div>
+<div>
+    <h4> Flight Details Are:</h4>
+    <table>
+        <tr>
+            <th>Flight ID</th>   
+            <th>Flight name</th>
+        </tr>
+        {% for key,value in flightname.items() %}          
+        <tr>
+            <td>{{key}}</td>
+            <td>{{value}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+</div>
+<div>
+    <form action="{{url_for('booking2')}}" method="POST" autocomplete="off" id="login-form">
+        <div class="form-group">
+
+            <label for="flightid">Enter Flight ID</label>
+            <input type="text" id="flightid" name = "flightid" placeholder="Enter Flight ID Eg(0 or 1)" required>
+        </div>
+        <div class="form-group">
+
+            <label for="Noofticket">Enter No of Ticket Required </label>
+            <input type="text" id="Noofticket" name = "Noofticket" placeholder="Enter No of ticket Do you want?" required>
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,36 @@
+{% extends "base2.html" %}
+{% block title %} Canceling {% endblock %}
+{% block content %}
+
+<h2>Canceling Flight Ticket</h2>
+<div>
+    <h4> Passenger Details are :</h4>
+    <table>
+        <tr>
+            <th>Passenger ID</th>   
+            <th>Flight ID</th>
+            <th>No Of Ticket Booked </th>
+        </tr>
+        {% for i in range(length)%}          
+        <tr>
+            <td>{{passengerID_arr[i]}}</td>
+            <td>{{flightID_arr[i]}}</td>
+            <td>{{No_of_ticket_arr[i]}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+</div>
+<div>
+    <form action="{{url_for('cancel3')}}" method="POST" autocomplete="off" id="login-form">
+        <div class="form-group">
+            <label for="passengerid">Enter Your PassengerID Correctly :</label>
+            <input type="text" id="passengerid" name = "passengerid" placeholder="Enter Your Passenger ID " required>
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

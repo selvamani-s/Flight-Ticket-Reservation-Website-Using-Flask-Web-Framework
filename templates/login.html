@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<h2>Login</h2>
+<form action="{{url_for('login')}}" method="POST" autocomplete="off" id="login-form">
+    <div style="text-align: center;">
+        {% with messages = get_flashed_messages(with_categories = true) %}
+        {% if messages %}
+            {% for category,message in messages %}
+                <div class="alert alert-{{category}}"> {{message}}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </div>
+    <div class="form-group"> 
+        <label for="email">Email:</label>
+        <input type="email" id="email" name = "email" placeholder="Enter your email" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name = "password" placeholder="Enter your password" required>
+    </div>
+    <div class="form-group">
+        <button type="submit">Login</button>
+    </div>
+</form>
+<div class="switch-form">
+    <p>Don't have an account? <a href="{{url_for('signup')}}">Sign up</a></p>
+</div>
+{% endblock %}
